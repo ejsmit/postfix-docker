@@ -6,4 +6,4 @@ multiplatform docker image for amd64, arm64 and arm.
 
 Only the newer alpine branch is built, not the original centos master branch.
 
-see also: <https://registry.hub.docker.com/u/juanluisbaptiste/postfix/>
+see also: <https://hub.docker.com/r/juanluisbaptiste/postfix/>
