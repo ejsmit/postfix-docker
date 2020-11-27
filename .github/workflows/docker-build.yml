@@ -14,8 +14,7 @@ jobs:
         id: prepare
         run: |
           echo ::set-output name=branch::migrate_to_alpine
-          echo ::set-output name=docker_image::ejsmit/postfix
-          echo ::set-output name=docker_username::ejsmit
+          echo ::set-output name=docker_image::ghcr.io/ejsmit/postfix
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -28,9 +27,9 @@ jobs:
           version: latest
       - name: Docker Login
         env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          GITHUB_CONTAINERS: ${{ secrets.GITHUB_CONTAINERS }}
         run: |
-          echo "${DOCKER_PASSWORD}" | docker login --username "${{ steps.prepare.outputs.docker_username }}" --password-stdin
+          echo "${GITHUB_CONTAINERS}" | docker login ghcr.io --username $GITHUB_ACTOR --password-stdin
       - name: Run Buildx
         run: |
           docker buildx build \
