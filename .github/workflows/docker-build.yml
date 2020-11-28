@@ -31,7 +31,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ejsmit
-          password: ${{ secrets.GITHUB_CONTAINERS }}
+          password: ${{ secrets.CR_PAT }}
       - name: Run Buildx
         run: |
           docker buildx build \
